@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Place Finder</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles/style.css">
+
+</head>
+<body>
+
+
+
+    <h1>Place Finder</h1>
+    <form method="POST" action="/search">
+      <input type="text" name="city" placeholder="Enter city" required />
+      <select name="placeType" required>
+        <option value="Hospital">Hospital</option>
+        <option value="Restaurant">Restaurant</option>
+        <option value="School">School</option>
+        <option value="Mall">Mall</option>
+      </select>
+      <button type="submit">Search</button>
+    </form>
+
+      <div class="container">
+      <div id="loading" class="loading-spinner">
+<img src="/assets/AI%20technology%20product%20loading%20animation%232.gif" alt="Loading..." />
+
+  </div>
+  
+    <% if (hospitals && hospitals.length > 0) { %>
+      
+      
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Website</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% hospitals.forEach(h => { %>
+            <tr>
+              <td><%= h.name %></td>
+              <td><%= h.address %></td>
+              <td><%= h.phone %></td>
+              <td><a href="<%= h.website %>" target="_blank"><%= h.website %></a></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    <% } else if (hospitals) { %>
+      <div class="no-results">No results found.</div>
+    <% } %>
+  </div>
+  <script>
+  const form = document.querySelector("form");
+  const loading = document.getElementById("loading");
+
+  form.addEventListener("submit", () => {
+    loading.style.display = "block";
+  });
+
+
+</script>
+
+</body>
+</html>
