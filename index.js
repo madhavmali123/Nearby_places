@@ -43,7 +43,7 @@ app.post("/search", async (req, res) => {
     
     const mapLink = serpApiResult.local_results?.more_locations_link;
     console.log(mapLink);
-   // const mapLink= "https://www.google.com/search?sca_esv=7e5953c6ea857c85&tbm=lcl&q=Hospital+near+Dhule&rflfq=1&num=10&sa=X&ved=2ahUKEwiK64rkwtmNAxXan5UCHYoDLMEQjGp6BAgxEAE";
+   
     if (!mapLink) return res.render("index", { hospitals: [], city, placeType });
 
     const browser = await puppeteer.launch({
