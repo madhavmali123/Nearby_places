@@ -5,9 +5,4 @@ services:
     buildCommand: npm install
     startCommand: node index.js
     plan: free
-    buildEnvironmentVariables:
-      PUPPETEER_SKIP_DOWNLOAD: true
-    runtimeEnvironmentVariables:
-      PUPPETEER_EXECUTABLE_PATH: "/usr/bin/chromium-browser"
-    packages:
-      - chromium-browser
+    
